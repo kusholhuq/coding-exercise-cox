@@ -116,3 +116,22 @@ describe('getVehicles', function () {
     assert(Array.isArray(vehicles.vehicleIds));
   })
 })
+
+describe('getVehicleInfo', function () {
+  this.timeout(15000);
+  it('should return an array', async () => {
+    const vehicleInfo = await getVehicleInfo(sampleData.id.datasetId, sampleData.vehicles.vehicleIds);
+    assert.typeOf(vehicleInfo, 'Array');
+  })
+  it('should return one array item for every id in vehicleIds', async () => {
+    const vehicleInfo = await getVehicleInfo(sampleData.id.datasetId, sampleData.vehicles.vehicleIds);
+    assert.equal(vehicleInfo.length, sampleData.vehicles.vehicleIds.length);
+
+  })
+  it('each array item should be an object', async () => {
+    const vehicleInfo = await getVehicleInfo(sampleData.id.datasetId, sampleData.vehicles.vehicleIds);
+    for (let i = 0; i < vehicleInfo.length; i++) {
+      assert.typeOf(vehicleInfo[i], 'object');
+    }
+  })
+})
