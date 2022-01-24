@@ -135,3 +135,11 @@ describe('getVehicleInfo', function () {
     }
   })
 })
+
+describe('determineUniqueDealers', function () {
+  this.timeout(15000);
+  it('should return an object', async () => {
+    const uniqueDealers = determineUniqueDealers(sampleData.vehicleInfo);
+    assert.typeOf(uniqueDealers, 'Object');
+  })
+})
