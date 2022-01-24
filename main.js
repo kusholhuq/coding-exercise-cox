@@ -35,3 +35,21 @@ async function getVehicleInfo(id, vehicles) {
     console.error(err);
   }
 }
+
+function determineUniqueDealers(vehicleInfoArray) {
+  const vehiclesByDealer = {};
+
+  for (let i = 0; i < vehicleInfoArray.length; i++) {
+    const dealerIdTemp = vehicleInfoArray[i].dealerId;
+    const vehicleInfo = vehicleInfoArray[i];
+    if (!vehiclesByDealer[dealerIdTemp]) {
+      vehiclesByDealer[dealerIdTemp] = [];
+      delete vehicleInfo.dealerId;
+      vehiclesByDealer[dealerIdTemp].push(vehicleInfo);
+    } else {
+      delete vehicleInfo.dealerId;
+      vehiclesByDealer[dealerIdTemp].push(vehicleInfo);
+    }
+  }
+  return vehiclesByDealer;
+}
