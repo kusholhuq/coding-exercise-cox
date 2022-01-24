@@ -20,3 +20,18 @@ async function getVehicles(id) {
     console.error(err);
   }
 }
+
+async function getVehicleInfo(id, vehicles) {
+  try {
+    const fetches = [];
+    for (let i = 0; i < vehicles.length; i++) {
+      let oneFetchCall = fetch(`${url}/${id}/vehicles/${vehicles[i]}`)
+        .then(responseVehicleInfo => responseVehicleInfo.json())
+      fetches.push(oneFetchCall);
+    }
+    let results = await Promise.all(fetches);
+    return results;
+  } catch (err) {
+    console.error(err);
+  }
+}
