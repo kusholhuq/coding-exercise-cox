@@ -161,3 +161,19 @@ describe('getDealers', function () {
     assert.equal(dealersInfo.length, Object.keys(sampleData.uniqueDealers).length);
   })
 })
+
+describe('formatAnswer', function () {
+  this.timeout(15000);
+  it('should return an object', () => {
+    const answer = formatAnswer(sampleData.dealersInfo, sampleData.uniqueDealers);
+    assert.typeOf(answer, 'object');
+  })
+  it('should return an object with a property dealers', () => {
+    const answer = formatAnswer(sampleData.dealersInfo, sampleData.uniqueDealers);
+    assert.property(answer, 'dealers');
+  })
+  it('the property dealers should be an array', () => {
+    const answer = formatAnswer(sampleData.dealersInfo, sampleData.uniqueDealers);
+    assert.typeOf(answer.dealers, 'array');
+  })
+})
