@@ -1,5 +1,5 @@
 const url = 'http://api.coxauto-interview.com/api';
-
+const buttonRef = document.querySelector('#button');
 
 async function getDatasetId() {
   try {
@@ -117,3 +117,18 @@ async function app() {
   const postResponse = await postAnswer(id.datasetId, answer);
   updateDom(postResponse);
 }
+
+function againHandler() {
+  app();
+  buttonRef.classList.add('hidden');
+  const messageHolder = document.querySelector("#message");
+  const successHolder = document.querySelector("#success");
+  const timeHolder = document.querySelector("#time");
+  messageHolder.textContent = '';
+  successHolder.textContent = 'Loading...';
+  timeHolder.textContent = '';
+}
+
+buttonRef.addEventListener('click', againHandler);
+
+app();
