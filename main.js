@@ -68,3 +68,11 @@ async function getDealers(id, dealerIds) {
     console.error(err);
   }
 }
+
+function formatAnswer(dealersInfo, dealersCars) {
+  for (let i = 0; i < dealersInfo.length; i++) {
+    const dealerId = dealersInfo[i].dealerId;
+    dealersInfo[i].vehicles = dealersCars[dealerId];
+  }
+  return { dealers: dealersInfo };
+}
