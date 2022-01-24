@@ -99,3 +99,20 @@ describe('getDatasetId', function () {
     assert.typeOf(result.datasetId, 'string');
   })
 })
+
+describe('getVehicles', function () {
+  this.timeout(15000);
+  it('should return an object', async () => {
+    const vehicles = await getVehicles(sampleData.id.datasetId);
+    assert.typeOf(vehicles, 'Object');
+  })
+  it('should return an object with property vehicleIds', async () => {
+    const vehicles = await getVehicles(sampleData.id.datasetId);
+    assert.property(vehicles, 'vehicleIds');
+
+  })
+  it('should return an object with property vehicleIds containing an array', async () => {
+    const vehicles = await getVehicles(sampleData.id.datasetId);
+    assert(Array.isArray(vehicles.vehicleIds));
+  })
+})
