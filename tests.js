@@ -83,3 +83,19 @@ const sampleData = {
   },
   postResponse: { success: true, message: 'Congratulations.', totalMilliseconds: 12500 }
 }
+
+describe('getDatasetId', function () {
+  this.timeout(15000);
+  it('should return an object', async () => {
+    const result = await getDatasetId();
+    assert.typeOf(result, 'Object');
+  })
+  it('should return an object with property datasetId', async () => {
+    const result = await getDatasetId();
+    assert.property(result, 'datasetId');
+  })
+  it('should return an object with property datasetId with a string value', async () => {
+    const result = await getDatasetId();
+    assert.typeOf(result.datasetId, 'string');
+  })
+})
