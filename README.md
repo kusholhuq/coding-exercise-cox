@@ -23,7 +23,7 @@ Coding exercise for SW Engineer role with Cox Automotive / Kelley Blue Book
  ### Getting Started
  1. Clone the repository
     ``` bash
-    git clone https://github.com/kusholhuq/coding-exercise-cox
+    git clone https://github.com/kusholhuq/coding-exercise-cox.git
     cd coding-exercise-cox
     ```
  1. Open index.html and run with live server (Optional: see VScode extension Live Server by Ritwick Dey.)
