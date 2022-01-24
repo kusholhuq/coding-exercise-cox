@@ -53,3 +53,18 @@ function determineUniqueDealers(vehicleInfoArray) {
   }
   return vehiclesByDealer;
 }
+
+async function getDealers(id, dealerIds) {
+  try {
+    const fetches = [];
+    for (const dealer in dealerIds) {
+      let oneFetchCall = fetch(`${url}/${id}/dealers/${dealer}`)
+        .then(responseDealerInfo => responseDealerInfo.json())
+      fetches.push(oneFetchCall);
+    }
+    let results = await Promise.all(fetches);
+    return results;
+  } catch (err) {
+    console.error(err);
+  }
+}
