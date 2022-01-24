@@ -10,3 +10,13 @@ async function getDatasetId() {
     console.error(err);
   }
 }
+
+async function getVehicles(id) {
+  try {
+    const responseVehicles = await fetch(`${url}/${id}/vehicles`);
+    const dataVehicles = await responseVehicles.json();
+    return dataVehicles;
+  } catch (err) {
+    console.error(err);
+  }
+}
