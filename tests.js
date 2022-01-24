@@ -143,3 +143,21 @@ describe('determineUniqueDealers', function () {
     assert.typeOf(uniqueDealers, 'Object');
   })
 })
+
+describe('getDealers', function () {
+  this.timeout(15000);
+  it('should return an array', async () => {
+    const dealersInfo = await getDealers(sampleData.id.datasetId, sampleData.uniqueDealers);
+    assert.typeOf(dealersInfo, 'array');
+  })
+  it('each array item should be an object', async () => {
+    const dealersInfo = await getDealers(sampleData.id.datasetId, sampleData.uniqueDealers);
+    for (let i = 0; i < dealersInfo.length; i++) {
+      assert.typeOf(dealersInfo[i], 'object');
+    }
+  })
+  it('should return one array item for every unique dealer id in the uniqueDealers object', async () => {
+    const dealersInfo = await getDealers(sampleData.id.datasetId, sampleData.uniqueDealers);
+    assert.equal(dealersInfo.length, Object.keys(sampleData.uniqueDealers).length);
+  })
+})
