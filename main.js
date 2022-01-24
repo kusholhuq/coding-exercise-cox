@@ -106,3 +106,14 @@ function updateDom(json) {
   timeHolder.textContent = time;
   buttonRef.classList.remove('hidden');
 }
+
+async function app() {
+  const id = await getDatasetId();
+  const vehicles = await getVehicles(id.datasetId);
+  const vehicleInfo = await getVehicleInfo(id.datasetId, vehicles.vehicleIds);
+  const uniqueDealers = determineUniqueDealers(vehicleInfo);
+  const dealersInfo = await getDealers(id.datasetId, uniqueDealers);
+  const answer = formatAnswer(dealersInfo, uniqueDealers);
+  const postResponse = await postAnswer(id.datasetId, answer);
+  updateDom(postResponse);
+}
