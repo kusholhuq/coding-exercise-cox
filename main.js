@@ -93,3 +93,16 @@ async function postAnswer(id, answer) {
     console.error(err);
   }
 }
+
+function updateDom(json) {
+  const messageHolder = document.querySelector("#message");
+  const successHolder = document.querySelector("#success");
+  const timeHolder = document.querySelector("#time");
+  const success = `Success: ${json.success}`;
+  const message = `Message: ${json.message}`;
+  const time = `Time: ${json.totalMilliseconds} milliseconds`;
+  messageHolder.textContent = message;
+  successHolder.textContent = success;
+  timeHolder.textContent = time;
+  buttonRef.classList.remove('hidden');
+}
