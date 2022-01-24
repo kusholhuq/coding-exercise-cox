@@ -177,3 +177,19 @@ describe('formatAnswer', function () {
     assert.typeOf(answer.dealers, 'array');
   })
 })
+
+describe('postResponse', function () {
+  this.timeout(15000)
+  it('should return an object', async () => {
+    const postResponse = await postAnswer(sampleData.id.datasetId, sampleData.answer);
+    assert.typeOf(postResponse, 'object');
+  })
+  it('should return an object with a property success', async () => {
+    const postResponse = await postAnswer(sampleData.id.datasetId, sampleData.answer);
+    assert.property(postResponse, 'success');
+  })
+  it('the property success should have value of true', async () => {
+    const postResponse = await postAnswer(sampleData.id.datasetId, sampleData.answer);
+    assert.equal(postResponse.success, true);
+  })
+})
