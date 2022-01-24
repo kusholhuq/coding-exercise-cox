@@ -76,3 +76,20 @@ function formatAnswer(dealersInfo, dealersCars) {
   }
   return { dealers: dealersInfo };
 }
+
+async function postAnswer(id, answer) {
+  try {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(answer),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    const responsePost = await fetch(`${url}/${id}/answer`, options);
+    const dataPost = await responsePost.json();
+    return dataPost;
+  } catch (err) {
+    console.error(err);
+  }
+}
